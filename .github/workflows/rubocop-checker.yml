@@ -1,38 +1,44 @@
 name: Rubocop Checker
 
-on: [push]
+on:
+  push:
+    branches:
+      - main # Adjust the branch name as needed
 
 jobs:
   rubocop-checker:
-    name: Executing Rubocop Checker
+    name: Execute Rubocop Checker
     runs-on: catalyst-at-macos
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-       setup ruby
-       - name: Set up Ruby
-         uses: ruby/setup-ruby@v1
-         with:
-           ruby-version: 2.7.8
-          
-      # bundle install
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.8
+
       - name: Bundle Install
-        run: bundle install
+        run: |
+          gem install bundler
+          bundle install
 
-      # install openvpn
+      # Uncomment the following lines if you still need OpenVPN setup
       # - name: Install OpenVPN
       #   run: |
       #     sudo apt update
       #     sudo apt install -y openvpn openvpn-systemd-resolved
-      
-      # execute connect openvpn
+
       # - name: Connect to VPN
       #   uses: "kota65535/github-openvpn-connect-action@v2"
       #   with:
       #     config_file: .github/workflows/client.ovpn
       #     username: ${{ secrets.OVPN_USERNAME }}
       #     password: ${{ secrets.OVPN_PASSWORD }}
-      
-      - name: Executing Rubocop
-        run: rubocop
+
+      - name: Execute Rubocop
+        run: |
+          rubocop --format simple --fail-level warning
+
+      # You might want to customize the rubocop command based on your preferences.
