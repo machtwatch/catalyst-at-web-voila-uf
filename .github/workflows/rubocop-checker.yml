@@ -1,15 +1,14 @@
 name: Rubocop Checker
 
-on:
-  push:
-    branches:
-      - main # Adjust the branch name as needed
+#on:
+#  push:
+#    branches:
+#      - main # Adjust the branch name as needed
 
 jobs:
   rubocop-checker:
     name: Execute Rubocop Checker
     runs-on: catalyst-at-macos
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
