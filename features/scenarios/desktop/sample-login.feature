@@ -14,3 +14,6 @@ Feature: Sample Feature
     And [Desktop] user will directed to "voila-web.machtwatch.net"
     Then [Desktop] user verify "not see" sign in button on sticky navbar
 
+  Scenario:
+    Given [Desktop] user sign in with account "data_1"
+

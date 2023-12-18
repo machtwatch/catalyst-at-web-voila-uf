@@ -1,5 +1,5 @@
 def get_user_token
-  url = URI(get_config_data("API_BASE_URL") + "/auth/login")
+  url = URI(get_config_data("endpoints")['login']['url'])
 
   https = Net::HTTP.new(url.host, url.port)
   https.use_ssl = true
