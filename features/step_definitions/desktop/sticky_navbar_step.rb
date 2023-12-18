@@ -13,5 +13,4 @@ Then("[Desktop] user verify {string} sign in button on sticky navbar") do |statu
 end
 
 When("{string}") do |arg|
-
 end

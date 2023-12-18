@@ -75,11 +75,11 @@ Capybara.register_driver :firefox do |app|
   client.open_timeout = wait_time
   client.read_timeout = wait_time
   Capybara::Selenium::Driver.new(
-      app,
-      browser: :firefox,
-      options: options,
-      http_client: client,
-      )
+    app,
+    browser: :firefox,
+    options: options,
+    http_client: client,
+  )
 end
 
 Capybara.register_driver :firefox_mweb do |app|
@@ -102,11 +102,11 @@ Capybara.register_driver :firefox_mweb do |app|
   client.open_timeout = wait_time
   client.read_timeout = wait_time
   Capybara::Selenium::Driver.new(
-      app,
-      browser: :firefox,
-      options: options,
-      http_client: client,
-      )
+    app,
+    browser: :firefox,
+    options: options,
+    http_client: client,
+  )
 end
 
 Capybara.register_driver :safari do |app|
@@ -116,10 +116,10 @@ Capybara.register_driver :safari do |app|
   client.open_timeout = wait_time
   client.read_timeout = wait_time
   Capybara::Selenium::Driver.new(
-      app,
-      browser: :safari,
-      options: options,
-      http_client: client
+    app,
+    browser: :safari,
+    options: options,
+    http_client: client
   )
 end
 
@@ -143,10 +143,10 @@ Capybara.register_driver :chrome do |app|
   client.read_timeout = wait_time
 
   Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      options: options,
-      http_client: client
+    app,
+    browser: :chrome,
+    options: options,
+    http_client: client
   )
 end
 
@@ -171,10 +171,10 @@ Capybara.register_driver :chrome_mweb do |app|
   client.read_timeout = wait_time
 
   Capybara::Selenium::Driver.new(
-      app,
-      browser: :chrome,
-      options: options,
-      http_client: client
+    app,
+    browser: :chrome,
+    options: options,
+    http_client: client
   )
 end
 
@@ -209,7 +209,7 @@ at_exit do |scenario|
     config.report_path = 'features/support/reports/index'
     config.report_title = "Test Result"
     config.additional_info = {
-        Domain: get_config_data('DOMAIN_NAME'),
+      Domain: get_config_data('DOMAIN_NAME'),
         Browser: ENV['BROWSER'].upcase,
         Environment: ENV['TARGET'].upcase,
         Tags: $tags_run.join(", "),

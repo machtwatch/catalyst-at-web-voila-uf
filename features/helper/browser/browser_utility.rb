@@ -80,4 +80,3 @@ def wait_for_ajax
     loop until finished_all_ajax_requests?
   end
 end
-

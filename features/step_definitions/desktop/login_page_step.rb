@@ -15,5 +15,4 @@ When("[Desktop] user see voila loader disappear") do ||
 end
 
 When("-") do ||
-
 end

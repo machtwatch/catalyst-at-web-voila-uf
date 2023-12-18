@@ -21,5 +21,4 @@ class StickyNavbar < SitePrism::Page
   def is_button_sign_in_appear
     return validate_element_not_found(BUTTON_SIGN_IN)
   end
-
 end

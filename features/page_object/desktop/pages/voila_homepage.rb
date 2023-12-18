@@ -5,5 +5,4 @@ class VoilaHomepage < SitePrism::Page
 
   path = get_config_data('web')['voila-homepage']['base']
   set_url(path)
-
 end

@@ -24,5 +24,4 @@ class Page
   def login_page
     load(LoginPage.new, nil)
   end
-
 end
