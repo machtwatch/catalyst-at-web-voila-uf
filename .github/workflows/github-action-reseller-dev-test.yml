@@ -1,98 +1,98 @@
-name: Debug Dev - Voila Reseller Platform
-
-on:
-  schedule:
-    - cron: '0 6,18 * * *'
-  # push:
-  #   branches: [ "master" ]
-  # pull_request:
-  #   branches: [ "master" ]
-  workflow_dispatch:
-
-jobs:
-  automation-test:
-    name: Execution Automation Test Environment Dev - Debug
-    runs-on: catalyst-at-macos
-
-    steps:
-      # set branch
-      - uses: actions/checkout@v3
-        with:
-          ref: dev
-
-      # set jakarta timezone
-      # - uses: szenius/set-timezone@v1.0
-      #   with:
-      #     timezoneLinux: "Asia/Jakarta" 
-      - name: Set Timezone Asia Jakarta
-        run: systemsetup -settimezone Asia/Jakarta     
-      
-      # setup ruby
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6.3
-
-      # # setup & install chrome browser
-      # - name: Setup Chrome
-      #   uses: browser-actions/setup-chrome@latest
-      #   with:
-      #     chrome-version: stable
-      
-      # setup & install firefox browser
-      - name: Setup Firefox
-        uses: browser-actions/setup-firefox@latest
-        with:
-          firefox-version: latest
-
-      # install gem
-      - name: Bundle Install
-        run: bundle install
-      
-      # install openvpn
-      - name: Install OpenVPN
-        run: |
-          sudo apt update
-          sudo apt install -y openvpn openvpn-systemd-resolved
-      
-      # execute connect openvpn
-      - name: Connect to VPN
-        uses: "kota65535/github-openvpn-connect-action@v2"
-        with:
-          config_file: .github/workflows/client.ovpn
-          username: ${{ secrets.OVPN_USERNAME }}
-          password: ${{ secrets.OVPN_PASSWORD }}
-      
-      # execute automation test  
-      - name: Run Test
-        run: bundle exec rake debug
-      
-      # archive test result
-      - name: Archive Test Result
-        uses: actions/upload-artifact@v3.1.0
-        if: always()
-        with:
-          name: Cucumber Report
-          path: features/support/reports
-
-      # # deploy to github pages
-      # - name: Deploy report to Github Pages
-      #   if: always()
-      #   uses: peaceiris/actions-gh-pages@v2
-      #   env:
-      #     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     PUBLISH_BRANCH: gh-pages-dev
-      #     PUBLISH_DIR: features/support/reports
-
-      # put report to s3 bucket          
-      - name: Configure AWS credentials from Test account
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-southeast-1
-      - run: |
-          export report_date=$(date '+%Y%m%d')
-          mkdir qa_report
-          mv features/support/reports/*.html qa_report/
-          aws s3 sync qa_report/ s3://qa-reports.ctlyst.id/voila-reseller/$report_date --acl public-read
+#name: Debug Dev - Voila Reseller Platform
+#
+#on:
+#  schedule:
+#    - cron: '0 6,18 * * *'
+#  # push:
+#  #   branches: [ "master" ]
+#  # pull_request:
+#  #   branches: [ "master" ]
+#  workflow_dispatch:
+#
+#jobs:
+#  automation-test:
+#    name: Execution Automation Test Environment Dev - Debug
+#    runs-on: catalyst-at-macos
+#
+#    steps:
+#      # set branch
+#      - uses: actions/checkout@v3
+#        with:
+#          ref: dev
+#
+#      # set jakarta timezone
+#      # - uses: szenius/set-timezone@v1.0
+#      #   with:
+#      #     timezoneLinux: "Asia/Jakarta"
+#      - name: Set Timezone Asia Jakarta
+#        run: systemsetup -settimezone Asia/Jakarta
+#
+#      # setup ruby
+#      - name: Set up Ruby
+#        uses: ruby/setup-ruby@v1
+#        with:
+#          ruby-version: 2.6.3
+#
+#      # # setup & install chrome browser
+#      # - name: Setup Chrome
+#      #   uses: browser-actions/setup-chrome@latest
+#      #   with:
+#      #     chrome-version: stable
+#
+#      # setup & install firefox browser
+#      - name: Setup Firefox
+#        uses: browser-actions/setup-firefox@latest
+#        with:
+#          firefox-version: latest
+#
+#      # install gem
+#      - name: Bundle Install
+#        run: bundle install
+#
+#      # install openvpn
+#      - name: Install OpenVPN
+#        run: |
+#          sudo apt update
+#          sudo apt install -y openvpn openvpn-systemd-resolved
+#
+#      # execute connect openvpn
+#      - name: Connect to VPN
+#        uses: "kota65535/github-openvpn-connect-action@v2"
+#        with:
+#          config_file: .github/workflows/client.ovpn
+#          username: ${{ secrets.OVPN_USERNAME }}
+#          password: ${{ secrets.OVPN_PASSWORD }}
+#
+#      # execute automation test
+#      - name: Run Test
+#        run: bundle exec rake debug
+#
+#      # archive test result
+#      - name: Archive Test Result
+#        uses: actions/upload-artifact@v3.1.0
+#        if: always()
+#        with:
+#          name: Cucumber Report
+#          path: features/support/reports
+#
+#      # # deploy to github pages
+#      # - name: Deploy report to Github Pages
+#      #   if: always()
+#      #   uses: peaceiris/actions-gh-pages@v2
+#      #   env:
+#      #     PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      #     PUBLISH_BRANCH: gh-pages-dev
+#      #     PUBLISH_DIR: features/support/reports
+#
+#      # put report to s3 bucket
+#      - name: Configure AWS credentials from Test account
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: ap-southeast-1
+#      - run: |
+#          export report_date=$(date '+%Y%m%d')
+#          mkdir qa_report
+#          mv features/support/reports/*.html qa_report/
+#          aws s3 sync qa_report/ s3://qa-reports.ctlyst.id/voila-reseller/$report_date --acl public-read
