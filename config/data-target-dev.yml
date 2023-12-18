@@ -1,0 +1,10 @@
+web:
+  voila-homepage:
+    base: https://dev-voila-web.machtwatch.net
+  login-page:
+    base: https://base.com
+
+endpoints:
+  login:
+    baseUrl: https://url.com:port
+    basePath: /

@@ -1,0 +1,38 @@
+name: Rubocop Checker
+
+on: [push]
+
+jobs:
+  rubocop-checker:
+    name: Executing Rubocop Checker
+    runs-on: catalyst-at-macos
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # setup ruby
+      # - name: Set up Ruby
+      #   uses: ruby/setup-ruby@v1
+      #   with:
+      #     ruby-version: 2.6.3
+          
+      # bundle install
+      - name: Bundle Install
+        run: bundle install
+
+      # install openvpn
+      # - name: Install OpenVPN
+      #   run: |
+      #     sudo apt update
+      #     sudo apt install -y openvpn openvpn-systemd-resolved
+      
+      # execute connect openvpn
+      # - name: Connect to VPN
+      #   uses: "kota65535/github-openvpn-connect-action@v2"
+      #   with:
+      #     config_file: .github/workflows/client.ovpn
+      #     username: ${{ secrets.OVPN_USERNAME }}
+      #     password: ${{ secrets.OVPN_PASSWORD }}
+      
+      - name: Executing Rubocop
+        run: rubocop

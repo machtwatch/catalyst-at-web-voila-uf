@@ -1,0 +1,26 @@
+require 'cucumber/rake/task'
+
+namespace :cucumber do
+  default_opts = ["-f pretty", "-f json", "-o features/support/reports/result-cucumber.json"]
+
+  Cucumber::Rake::Task.new(:all_dev, "Run all features on dev env") do |t|
+    t.cucumber_opts = [*default_opts, "TARGET=dev BROWSER=firefox PRIVATE=no HEADLESS=yes SLACK_NOTIF=yes SLACK_REPORT=no -t @regression -t @login -t ~@production --retry 3 --no-strict-flaky -f rerun --out rerun.txt"]
+  end
+
+  Cucumber::Rake::Task.new(:all_stg, "Run all features on stg env") do |t|
+    t.cucumber_opts = [*default_opts, "TARGET=stg BROWSER=firefox PRIVATE=no HEADLESS=yes SLACK_NOTIF=yes SLACK_REPORT=no -t @regression -t @login -t ~@production --retry 3 --no-strict-flaky -f rerun --out rerun.txt"]
+  end
+
+  Cucumber::Rake::Task.new(:all_prod, "Run all features on production env") do |t|
+    t.cucumber_opts = [*default_opts, "TARGET=prod BROWSER=firefox PRIVATE=no HEADLESS=yes SLACK_NOTIF=yes SLACK_REPORT=no -t @regression -t @login -t @production --retry 3 --no-strict-flaky -f rerun --out rerun.txt"]
+  end
+
+  Cucumber::Rake::Task.new(:debug, "Run all debug scenarios") do |t|
+    t.cucumber_opts = [*default_opts, "TARGET=dev BROWSER=firefox PRIVATE=no HEADLESS=no SLACK_NOTIF=yes SLACK_REPORT=no -t @debug --retry 1 --no-strict-flaky -f rerun --out rerun.txt"]
+  end
+end
+
+task dev: "cucumber:all_dev"
+task stg: "cucumber:all_stg"
+task prod: "cucumber:all_prod"
+task debug: "cucumber:debug"

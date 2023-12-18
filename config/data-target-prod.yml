@@ -1,0 +1,15 @@
+#GENERAL
+DOMAIN_NAME: Voila Reseller Platform
+DOMAIN_REPORT: voila-reseller
+WEB_BASE_URL_VOILA_RESELLER: https://biz.voila.id
+ASSERT_URL_WAIT_TIME: 3
+
+#ENVIRONMENT DATA
+VALID_USERNAME: weleyam@machtwatch.co.id
+VALID_PASSWORD: Weletest-123
+
+INVALID_USERNAME: ini invalid username prod
+INVALID_PASSWORD: ini-invalid-password-prod
+
+TELEGRAM_PAGE_TITLE_ADMIN_SALES: 'Telegram: Contact @adm_sales'
+TELEGRAM_PAGE_TITLE_ADMIN_WAREHOUSE: 'Telegram: Contact @Aadminmb1'

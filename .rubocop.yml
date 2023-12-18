@@ -1,0 +1,15 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-minitest
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_gem:
+  google-style: google-style.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.3
+  NewCops: enable
+  SuggestExtensions: false

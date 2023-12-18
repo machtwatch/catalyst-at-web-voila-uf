@@ -1,0 +1,20 @@
+# screenshot
+**/features/support/failed_png/*.png
+**/features/support/success_png/*.png
+
+#reporting
+**/features/support/reports/*.html
+**/features/support/reports/result-cucumber.json
+
+
+# OS generated files #
+######################
+.idea/
+.DS_Store
+.DS_Store?
+._*
+#.env
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

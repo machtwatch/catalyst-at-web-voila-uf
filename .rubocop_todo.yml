@@ -1,0 +1,63 @@
+# Bundler cops check for style and bad practices in Bundler files, e.g. Gemfile.
+Bundler:
+  Enabled: true
+
+# Gemspec cops check for style and bad practices in gemspec files, e.g. rubocop.gemspec.
+Gemspec:
+  Enabled: false
+
+# Layout cops inspect your code for consistent use of indentation, alignment, and white space.
+Layout:
+  Enabled: true
+  Exclude:
+  - 'features/support/slack.rb'
+  
+# Checks the length of lines in the source code. The maximum length is configurable.
+Layout/LineLength:
+  Max: 300
+  Exclude:
+    - 'features/support/slack.rb'
+    # - 'features/step_definitions/**/*.rb'
+    # - 'features/page_object/**/*.rb'
+    - 'rakefile'
+
+# Lint cops check for ambiguities and possible errors in your code.
+Lint:
+  Enabled: false
+
+# Metrics cops deal with properties of the source code that can be measured, such as class length, method length, etc
+Metrics:
+  Enabled: false
+
+# Check that cop names in rubocop:disable comments are given with department name.
+Migration:
+  Enabled: false
+
+# Minitest cops check for Minitest best practices and coding conventions. Many of the them are based on the Minitest Style Guide.
+Minitest:
+  Enabled: false
+
+# Naming cops check for naming issue of your code, such as method name, constant name, file name, etc.
+Naming:
+  Enabled: false
+
+# Performance cops optimization analysis for your projects.
+Performance:
+  Enabled: false
+
+# Rails cops check for Rails best practices and coding conventions.
+Rails:
+  Enabled: false
+
+# Enforce the guidelines and best practices outlined in the community RSpec style guide
+# Simplify the process of adopting new RSpec functionality
+RSpec:
+  Enabled: false
+
+# Security cops checks for method calls and constructs which are known to be associated with potential security issues.
+Security:
+  Enabled: false
+
+# Style cops check for stylistic consistency of your code. Many of the them are based on the Ruby Style Guide.
+Style:
+  Enabled: false
