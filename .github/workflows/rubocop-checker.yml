@@ -2,8 +2,7 @@ name: Rubocop Checker
 
 on:
   pull_request:
-    branches:
-      - [ master ]
+    branches: [ master ]
 
 jobs:
   rubocop-checker:
