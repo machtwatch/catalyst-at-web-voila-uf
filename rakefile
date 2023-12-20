@@ -1,7 +1,13 @@
 require 'cucumber/rake/task'
 
 namespace :cucumber do
-  default_opts = ["-f pretty", "-f json", "-o features/support/reports/result-cucumber.json"]
+  default_opts = [
+    "-f pretty",
+    "-f json",
+    "-p -parallel_report_portal",
+    "-o features/support/reports/result-cucumber.json",
+    "-f ReportPortal::RSpec::Formatter"
+  ]
 
   Cucumber::Rake::Task.new(:all_dev, "Run all features on dev env") do |t|
     t.cucumber_opts = [*default_opts, "TARGET=dev BROWSER=firefox PRIVATE=no HEADLESS=yes SLACK_NOTIF=yes SLACK_REPORT=no -t @regression -t @login -t ~@production --retry 3 --no-strict-flaky -f rerun --out rerun.txt"]
