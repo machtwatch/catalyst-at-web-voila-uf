@@ -63,8 +63,8 @@ gem 'pronto-rubocop', require: false
 # Development Gems
 group :development do
   gem 'parallel_report_portal'
-  gem 'reportportal'
   gem 'pry', '~> 0.10.4'
+  gem 'reportportal'
 end
 
 # Test Gems
