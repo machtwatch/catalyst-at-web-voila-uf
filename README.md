@@ -90,5 +90,6 @@ Software Automation Testing for Machtwatch using ruby and cucumber
     OR
     cucumber TARGET=dev BROWSER=firefox PRIVATE=no HEADLESS=no -t @login -t @desktop --retry 3 --no-strict-flaky -f rerun --out rerun.txt
     OR
-    bundle exec rake dev
+    # -t: your spesific tags, -n: concurrent_browser do you want
+    CUCUMBER_OPTS="-t @your.tag" bundle exec parallel_cucumber -n 2 features/ 
   ```
