@@ -24,7 +24,7 @@ jobs:
           sed -ie "s|2.7.8|2.6.3|g" .rvmrc
 
       - name: Bundle Install
-          run: bundle install
+        run: bundle install
 
       - name: Execute Rubocop
         run: |
