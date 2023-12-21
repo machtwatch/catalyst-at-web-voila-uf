@@ -1,14 +1,14 @@
 #GENERAL
-DOMAIN_NAME: Voila Reseller Platform
-DOMAIN_REPORT: voila-reseller
-WEB_BASE_URL_VOILA_RESELLER: https://stg-biz-reseller.machtwatch.net/
+DOMAIN_NAME: Voila uf Platform
+DOMAIN_REPORT: voila-uf
+WEB_BASE_URL_VOILA_uf: https://stg-biz-uf.machtwatch.net/
 API_BASE_URL: https://api-stg-biz.machtwatch.net/api
 API_XMS_BASE_URL: https://api-stg-biz.machtwatch.net/api/xms
 API_XMS_TOKEN_URL: https://stg-mw-xms.machtwatch.net/api/v1/xms/auth/login
 ASSERT_URL_WAIT_TIME: 3
 
 #ENVIRONMENT DATA
-XMS_USERNAME: qa.reseller.automation@machtwatch.co.id
+XMS_USERNAME: qa.uf.automation@machtwatch.co.id
 XMS_PASSWORD: R2V<T3jT
 
 VALID_USERNAME: automationtest
@@ -19,8 +19,8 @@ INVALID_PASSWORD: ini-invalid-password-staging
 
 NEW_PASSWORD: Test-123456
 
-RESELLER_NAME: automationtest
-RESELLER_PHONE: 08127282722
+uf_NAME: automationtest
+uf_PHONE: 08127282722
 
 PRODUCT_SKU_AVAILABLE: AUTOMATION-001
 PRODUCT_NAME_AVAILABLE: AUTOMATION PRODUCT - DO NOT TOUCH 01

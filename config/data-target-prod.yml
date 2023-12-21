@@ -1,7 +1,7 @@
 #GENERAL
-DOMAIN_NAME: Voila Reseller Platform
-DOMAIN_REPORT: voila-reseller
-WEB_BASE_URL_VOILA_RESELLER: https://biz.voila.id
+DOMAIN_NAME: Voila uf Platform
+DOMAIN_REPORT: voila-uf
+WEB_BASE_URL_VOILA_uf: https://biz.voila.id
 ASSERT_URL_WAIT_TIME: 3
 
 #ENVIRONMENT DATA
