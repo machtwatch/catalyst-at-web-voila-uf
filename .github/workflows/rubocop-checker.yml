@@ -7,21 +7,24 @@ on:
 jobs:
   rubocop-checker:
     name: Execute Rubocop Checker
-    runs-on: ubuntu-latest
+    runs-on: catalyst-at-macos
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Ruby 2.7.8
-        uses: actions/setup-ruby@v3
-        with:
-          ruby-version: 2.7.8
+      #- name: Set up Ruby
+      #  uses: ruby/setup-ruby@v1
+      #  with:
+      #    ruby-version: 2.6.3
+
+      - name: Config Gemfile
+        run: |
+          sed -ie "s|ruby '2.7.8'|ruby '2.6.3'|g" Gemfile
+          sed -ie "s|2.7.8|2.6.3|g" .rvmrc
 
       - name: Bundle Install
-        run: |
-          gem install bundler -v 2.4.22
-          bundle install
+          run: bundle install
 
       - name: Execute Rubocop
         run: |
