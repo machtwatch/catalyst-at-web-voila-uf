@@ -3,5 +3,6 @@ Given("[Desktop] user desktop user visit voila homepage") do
 end
 
 When("[Desktop] user will directed to {string}") do |url|
+  wait_for_ajax
   expect(current_url).to include(url)
 end

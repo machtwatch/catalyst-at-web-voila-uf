@@ -16,4 +16,3 @@ Feature: Sample Feature
 
   Scenario:
     Given [Desktop] user sign in with account "data_1"
-
