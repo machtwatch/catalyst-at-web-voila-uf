@@ -11,7 +11,7 @@ Feature: Login
     Then [Desktop] user see all component on login page
 
   @AccountPlatform @Login @AP3
-    Scenario: user success to sign in with valid email and password on sign in page
+    Scenario: [Sign In][Dekstop] user success to sign in with valid email and password on sign in page
     And [Desktop] user click "Sign In" button on sticky navbar
     And [Desktop] user fill email "voilatesting123@gmail.com" on login page
     And [Desktop] user fill password "Voila99!" on login page
@@ -20,7 +20,7 @@ Feature: Login
     Then [Desktop] user verify "not see" sign in button on sticky navbar
 
   @AccountPlatform @Login @AP4
-  Scenario: user success to sign in with valid email and password on sign in page
+  Scenario: [Sign In][Dekstop] user success to sign in with valid email and password on sign in page
     And [Desktop] user click "Sign In" button on sticky navbar
     And [Desktop] user fill phone number "0899396999" on login page
     And [Desktop] user click sign in button on login page
