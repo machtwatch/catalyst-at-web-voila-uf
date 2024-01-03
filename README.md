@@ -78,7 +78,7 @@ Software Automation Testing for Machtwatch using ruby and cucumber
 14. Setup Gem
 
   ```
-    rvm use 2.6.3@web-test --create
+    rvm use 2.7.8
     gem install bundler
     bundle install
   ```
