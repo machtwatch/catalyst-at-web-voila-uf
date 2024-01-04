@@ -2,11 +2,12 @@ name: Rubocop Checker
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   rubocop-checker:
-    name: Execute Rubocop Checker
+    name: Executing Rubocop Checker
     runs-on: catalyst-at-macos
 
     steps:
@@ -16,15 +17,10 @@ jobs:
       #- name: Set up Ruby
       #  uses: ruby/setup-ruby@v1
       #  with:
-      #    ruby-version: 2.6.3
+      #    ruby-version: 2.7.0
 
-      #- name: Config Gemfile
-      #  run: |
-      #    sed -ie "s|ruby '2.7.8'|ruby '2.7.0'|g" Gemfile
-      #    sed -ie "s|2.7.8|2.7.0|g" .ruby-version
-
-      #- name: Bundle Install
-      #  run: bundle install
+      - name: Bundle Install
+        run: bundle install
 
       - name: Execute Rubocop
         run: |
