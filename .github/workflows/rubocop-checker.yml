@@ -18,10 +18,10 @@ jobs:
       #  with:
       #    ruby-version: 2.6.3
 
-      - name: Config Gemfile
-        run: |
-          sed -ie "s|ruby '2.7.8'|ruby '2.7.0'|g" Gemfile
-          sed -ie "s|2.7.8|2.7.0|g" .ruby-version
+      #- name: Config Gemfile
+      #  run: |
+      #    sed -ie "s|ruby '2.7.8'|ruby '2.7.0'|g" Gemfile
+      #    sed -ie "s|2.7.8|2.7.0|g" .ruby-version
 
       #- name: Bundle Install
       #  run: bundle install
