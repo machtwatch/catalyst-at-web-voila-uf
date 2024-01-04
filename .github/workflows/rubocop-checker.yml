@@ -2,26 +2,26 @@ name: Rubocop Checker
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [master]
+  workflow_dispatch:
 
 jobs:
   rubocop-checker:
     name: Execute Rubocop Checker
-    runs-on: catalyst-at-macos
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      #- name: Set up Ruby
-      #  uses: ruby/setup-ruby@v1
-      #  with:
-      #    ruby-version: 2.6.3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.8
 
-      - name: Config Gemfile
+      - name: Install Bundler
         run: |
-          sed -ie "s|ruby '2.7.8'|ruby '2.6.3'|g" Gemfile
-          sed -ie "s|2.7.8|2.6.3|g" .rvmrc
+          gem install bundler -v '2.4.22'
 
       - name: Bundle Install
         run: bundle install
