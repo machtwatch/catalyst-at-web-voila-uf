@@ -7,7 +7,7 @@ on:
 jobs:
   rubocop-checker:
     name: Execute Rubocop Checker
-    runs-on: catalyst-at-macos-02
+    runs-on: catalyst-at-macos
 
     steps:
       - name: Checkout Repository
