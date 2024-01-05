@@ -1,0 +1,5 @@
+uuid: irsyad_oHLcvdw3TGOyhJ2MZ2bg-yNCwRmCd7JJwFUs2GaMIbeE_WN-JaNleuFgAqT2srA5
+endpoint: https://demo.reportportal.io/api/v1
+project: default_personal
+launch: Ruby_launch
+disable_ssl_verification: true
