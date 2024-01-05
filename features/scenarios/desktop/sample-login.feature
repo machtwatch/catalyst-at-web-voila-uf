@@ -5,7 +5,7 @@ Feature: Sample Feature
     Given [Desktop] user desktop user visit voila homepage
     And [Desktop] user click "Sign In" button on sticky navbar
 
-  @sample.login
+  @sample.login.1
   Scenario: Verify user able to login with a valid username and password
     And [Desktop] user fill email "irsyad@machtwatch.co.id" on login page
     And [Desktop] user fill password "voila-UF5" on login page
@@ -14,5 +14,6 @@ Feature: Sample Feature
     And [Desktop] user will directed to "voila-web.machtwatch.net"
     Then [Desktop] user verify "not see" sign in button on sticky navbar
 
-  Scenario:
+  @sample.login.2
+  Scenario: Test YML
     Given [Desktop] user sign in with account "data_1"

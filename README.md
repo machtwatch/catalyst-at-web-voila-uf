@@ -78,7 +78,7 @@ Software Automation Testing for Machtwatch using ruby and cucumber
 14. Setup Gem
 
   ```
-    rvm use 2.6.3@web-test --create
+    rvm use 2.7.8
     gem install bundler
     bundle install
   ```
@@ -90,5 +90,6 @@ Software Automation Testing for Machtwatch using ruby and cucumber
     OR
     cucumber TARGET=dev BROWSER=firefox PRIVATE=no HEADLESS=no -t @login -t @desktop --retry 3 --no-strict-flaky -f rerun --out rerun.txt
     OR
-    bundle exec rake dev
+    #-n: concurrent_browser do you want, -o: option cucumber, -t: your spesific tags
+    parallel_cucumber features/ -n 2 -o '-t @include_tag -t ~@not_include_tag' 
   ```

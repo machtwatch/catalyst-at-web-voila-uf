@@ -14,10 +14,12 @@ require 'net/http/post/multipart'
 require 'net/imap'
 require 'nokogiri'
 require 'open-uri'
+require 'parallel_report_portal'
 require 'pry'
 require 'quickchart'
 require 'report_builder'
 require 'rexml/document'
+require 'reportportal'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'slack-ruby-block-kit'
@@ -34,6 +36,12 @@ def get_config_data(key)
   return config_data[key]
 end
 
+def display_banner
+  file_path = "config/banner.txt"
+  banner_content = File.read(file_path)
+  puts banner_content
+end
+
 @tags = Array.new
 browser = (ENV['BROWSER'] || 'chrome').to_sym
 wait_time = 60 * 5
@@ -44,7 +52,6 @@ $scenario_name = ""
 $feature_count = 0
 $feature_name = ""
 $start_time = Time.now.to_i
-
 puts "Target    : #{ENV["TARGET"].upcase}"
 puts "Browser   : #{browser.upcase}"
 if ENV["BROWSER"].upcase == "SAFARI"
@@ -57,6 +64,7 @@ else
     puts "Private   : NO"
   end
   puts "Headless  : #{ENV["HEADLESS"].upcase}"
+  display_banner
 end
 
 Capybara.register_driver :firefox do |app|
