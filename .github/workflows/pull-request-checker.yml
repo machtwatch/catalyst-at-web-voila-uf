@@ -6,15 +6,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  code-checker:
-    name: Execute Code Checker
+  code-analysis:
+    name: Code Checker
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Config Gemfile for checker
+      - name: Configure Gemfile for Code Checker
         run: |
           mv Gemfile Gemfilee
           mv GemfileForChecker Gemfile
@@ -30,12 +30,13 @@ jobs:
           gem install bundler -v '2.4.22'
 
       - name: Bundle Install
+        if: success()
         run: bundle install
 
-      - name: Execute code static
+      - name: Execute RuboCop Code Analysis
         run: |
-          rubocop --fail-level warning
+          rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
 
-      - name: Execute code detector
+      - name: Execute Reek Code Detector
         run: |
           reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
