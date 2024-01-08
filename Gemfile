@@ -55,3 +55,9 @@ gem 'wannabe_bool', '~> 0.7.1'
 gem 'webdrivers', '5.3.1'
 gem 'xvfb', '1.0.4'
 gem 'yaml', '~> 0.1.0'
+
+# Pronto
+gem 'pronto'
+gem 'pronto-flay', require: false
+gem 'pronto-reek', require: false
+gem 'pronto-rubocop', require: false
