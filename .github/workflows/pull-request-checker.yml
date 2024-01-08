@@ -34,5 +34,9 @@ jobs:
 
       - name: Execute code static analyzer & code detector
         run: |
-          reek || (echo "Reek failed with warnings/errors")
-          rubocop --fail-level warning || (echo "Rubocop failed with warnings/errors" && exit 1)
+#          rubocop --fail-level warning || (echo "Rubocop failed with warnings/errors" && exit 1)
+          rubocop --fail-level warning
+
+      - name: Execute code detector
+        run: |
+          reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
