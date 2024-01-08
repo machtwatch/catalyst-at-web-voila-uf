@@ -8,17 +8,17 @@ class StickyNavbar < SitePrism::Page
   element :sign_in_button, :xpath, BUTTON_SIGN_IN
   element :register_button, :xpath, BUTTON_REGISTER
 
-  def click_sign_in
+  def click_sign_in_button
     sign_in_button.should be_visible
     sign_in_button.click
   end
 
-  def click_register
+  def click_register_button
     register_button.should be_visible
     register_button.click
   end
 
-  def is_button_sign_in_appear
+  def is_sign_in_button_appear
     return validate_element_not_found(BUTTON_SIGN_IN)
   end
 end

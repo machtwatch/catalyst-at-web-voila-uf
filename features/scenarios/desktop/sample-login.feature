@@ -17,4 +17,3 @@ Feature: Sample Feature
   @sample.login.2
   Scenario: Test YML
     Given [Desktop] user sign in with account "data_1"
-
