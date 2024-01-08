@@ -7,7 +7,7 @@ on:
 
 jobs:
   pipeline-checker:
-    name: Checker
+    name: Pull Request Checker
     runs-on: ubuntu-latest
 
     steps:
@@ -31,7 +31,9 @@ jobs:
       - name: Bundle Install
         run: bundle install
 
-      - name: Execute code analyzer & detector
+      - name: Execute code static analyzer
         run: |
           rubocop --fail-level warning || (echo "Rubocop failed with warnings or errors" && exit 1)
-          reek
+
+      - name: Execute code detector
+        run: reek
