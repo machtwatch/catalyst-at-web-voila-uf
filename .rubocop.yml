@@ -12,8 +12,3 @@ AllCops:
   TargetRubyVersion: 2.7.8
   NewCops: enable
   SuggestExtensions: false
-
-# Align parameters
-Layout/ParameterAlignment:
-  Enabled: true
-  EnforcedStyle: with_fixed_indentation

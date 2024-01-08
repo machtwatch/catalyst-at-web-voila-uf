@@ -26,6 +26,11 @@ Layout/LineLength:
     # - 'features/page_object/**/*.rb'
     - 'rakefile'
 
+# Align parameters
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
+
 # Lint cops check for ambiguities and possible errors in your code.
 Lint:
   Enabled: false
