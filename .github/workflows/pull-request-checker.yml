@@ -6,8 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  pipeline-checker:
-    name: Check code analyzer & detector
+  code-checker:
+    name: Execute Code Checker
     runs-on: ubuntu-latest
 
     steps:
@@ -32,9 +32,8 @@ jobs:
       - name: Bundle Install
         run: bundle install
 
-      - name: Execute code static analyzer & code detector
+      - name: Execute code static
         run: |
-#          rubocop --fail-level warning || (echo "Rubocop failed with warnings/errors" && exit 1)
           rubocop --fail-level warning
 
       - name: Execute code detector
