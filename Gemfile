@@ -27,8 +27,10 @@ gem 'jsonpath', '~> 0.8.7'
 gem 'json_schema', '~> 0.20.8'
 gem 'jwt', '2.2.1'
 gem 'magick_title', '~> 0.2.0'
+gem 'mail', '~> 2.8', '>= 2.8.1'
 gem 'multipart-post'
 # gem 'mysql2', '~> 0.5.2'
+gem 'net-imap', '~> 0.4.9'
 gem 'net-scp', '~> 2.0'
 gem 'net-ssh', '~> 5.2'
 gem 'nokogiri', '~> 1.7', '>= 1.7.0.1'
@@ -53,24 +55,3 @@ gem 'wannabe_bool', '~> 0.7.1'
 gem 'webdrivers', '5.3.1'
 gem 'xvfb', '1.0.4'
 gem 'yaml', '~> 0.1.0'
-
-# Pronto
-gem 'pronto'
-gem 'pronto-flay', require: false
-gem 'pronto-reek', require: false
-gem 'pronto-rubocop', require: false
-
-# Development Gems
-group :development do
-  gem 'parallel_report_portal'
-  gem 'pry', '~> 0.10.4'
-  gem 'reportportal'
-end
-
-# Test Gems
-group :test do
-  gem 'debase'
-  gem 'parallel_tests'
-  gem 'rspec', '~> 3.8.0'
-  gem 'ruby-debug-ide'
-end
