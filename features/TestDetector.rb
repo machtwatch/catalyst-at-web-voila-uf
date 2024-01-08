@@ -1,3 +1,3 @@
-def notWorking(unused, parameter)
-  this_string = parameter
+def thisForExtractString(unused, parameter)
+  this_string = parameter + unused
 end

@@ -4,7 +4,11 @@ Bundler:
 
 # Gemspec cops check for style and bad practices in gemspec files, e.g. rubocop.gemspec.
 Gemspec:
-  Enabled: false
+  Enabled: true
+
+# Naming cops check for naming issue of your code, such as method name, constant name, file name, etc.
+Naming:
+  Enabled: true
 
 # Layout cops inspect your code for consistent use of indentation, alignment, and white space.
 Layout:
@@ -22,8 +26,6 @@ Layout/LineLength:
   Max: 300
   Exclude:
     - 'features/support/slack.rb'
-    # - 'features/step_definitions/**/*.rb'
-    # - 'features/page_object/**/*.rb'
     - 'rakefile'
 
 # Align parameters
@@ -41,10 +43,6 @@ Metrics:
 
 # Check that cop names in rubocop:disable comments are given with department name.
 Migration:
-  Enabled: false
-
-# Naming cops check for naming issue of your code, such as method name, constant name, file name, etc.
-Naming:
   Enabled: false
 
 # Performance cops optimization analysis for your projects.

@@ -7,22 +7,23 @@ on:
 
 jobs:
   pipeline-checker:
-    name: Pull Request Checker
+    name: Check code analyzer & detector
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.7.8
-
       - name: Config Gemfile for checker
         run: |
           mv Gemfile Gemfilee
           mv GemfileForChecker Gemfile
+          cat Gemfile
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.8
 
       - name: Install Bundler
         run: |
@@ -31,10 +32,7 @@ jobs:
       - name: Bundle Install
         run: bundle install
 
-      - name: Execute code detector
+      - name: Execute code static analyzer & code detector
         run: |
-          reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
-
-      - name: Execute code static analyzer
-        run: |
+          reek || (echo "Reek failed with warnings/errors")
           rubocop --fail-level warning || (echo "Rubocop failed with warnings/errors" && exit 1)
