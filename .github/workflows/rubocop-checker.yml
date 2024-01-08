@@ -18,14 +18,19 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.8
-
+      - name: Config Gemfile for checker
+        run: |
+          mv Gemfile Gemfilee
+          mv GemfileForChecker Gemfile
       - name: Install Bundler
         run: |
           gem install bundler -v '2.4.22'
-
       - name: Bundle Install
         run: bundle install
-
+      # Code static analyzer & formatter
       - name: Execute Rubocop
         run: |
-          rubocop --format simple --fail-level warning || exit 1
+          rubocop --fail-level warning || exit 1
+      # Code detector
+      - name: Execute Reek
+        run: bundle exec reek

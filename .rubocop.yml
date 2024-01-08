@@ -1,7 +1,6 @@
 inherit_from: .rubocop_todo.yml
 
 require:
-  - rubocop-minitest
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
@@ -13,21 +12,6 @@ AllCops:
   TargetRubyVersion: 2.7.8
   NewCops: enable
   SuggestExtensions: false
-
-# Naming file
-Naming/FileName:
-  Enabled: true
-  EnforcedStyle: snake_case
-
-# Format method name
-Naming/MethodName:
-  Enabled: true
-  EnforcedStyle: snake_case
-
-# Space indentation
-Layout/IndentationWidth:
-  Enabled: true
-  Width: 2
 
 # Align parameters
 Layout/ParameterAlignment:
