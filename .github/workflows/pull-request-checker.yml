@@ -33,7 +33,6 @@ jobs:
 
       - name: Execute code detector
         run: |
-          chmod +x $(which reek)
           reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
 
       - name: Execute code static analyzer
