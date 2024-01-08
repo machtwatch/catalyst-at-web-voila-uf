@@ -37,7 +37,7 @@ jobs:
           rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
           rubocop_warnings=$(rubocop --fail-level warning --format simple)
           if [ -n "$rubocop_warnings" ]; then
-            echo "RuboCop warnings found, skipping Reek"
+            echo "RuboCop warnings found, skipping Execute Reek"
             exit 1
           fi
 
