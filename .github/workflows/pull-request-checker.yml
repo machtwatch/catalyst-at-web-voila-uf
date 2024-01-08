@@ -34,9 +34,10 @@ jobs:
 
       - name: Execute RuboCop Code Analysis
         run: |
-          rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
           rubocop_warnings=$(rubocop --fail-level warning --format simple)
-          if [ -n "$rubocop_warnings" ]; then
+          if echo "$rubocop_warnings" | grep -q "no offenses detected"; then
+            echo "RuboCop found no offenses"
+          else
             echo "RuboCop warnings found, skipping Execute Reek"
             exit 1
           fi
