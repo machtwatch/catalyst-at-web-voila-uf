@@ -61,3 +61,18 @@ gem 'pronto'
 gem 'pronto-flay', require: false
 gem 'pronto-reek', require: false
 gem 'pronto-rubocop', require: false
+
+# Development Gems
+group :development do
+  gem 'parallel_report_portal'
+  gem 'pry', '~> 0.10.4'
+  gem 'reportportal'
+end
+
+# Test Gems
+group :test do
+  gem 'debase'
+  gem 'parallel_tests'
+  gem 'rspec', '~> 3.8.0'
+  gem 'ruby-debug-ide'
+end
