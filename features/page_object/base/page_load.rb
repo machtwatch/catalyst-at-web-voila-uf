@@ -24,4 +24,12 @@ class Page
   def login_page
     load(LoginPage.new, nil)
   end
+
+  def register_page
+    load(RegisterPage.new, nil)
+  end
+
+  def verification_method_popup
+    load(VerificationMethodPopup.new, nil)
+  end
 end

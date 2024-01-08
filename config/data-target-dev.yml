@@ -17,3 +17,8 @@ account:
   data_1:
     username: irsyad@machtwatch.co.id
     password: voila-UF5
+
+account_platform:
+  data_1:
+    username: voilatesting123@gmail.com
+    password: Voila99!
