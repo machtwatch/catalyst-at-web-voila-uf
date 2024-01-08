@@ -36,7 +36,9 @@ jobs:
       - name: Execute RuboCop Code Analysis
         run: |
           rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
+        if: failure()
 
       - name: Execute Reek Code Detector
         run: |
           reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
+        if: failure()
