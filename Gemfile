@@ -71,8 +71,6 @@ end
 
 # Test Gems
 group :test do
-  gem 'debase'
   gem 'parallel_tests'
   gem 'rspec', '~> 3.8.0'
-  gem 'ruby-debug-ide'
 end
