@@ -30,10 +30,10 @@ jobs:
           gem install bundler -v '2.4.22'
 
       - name: Bundle Install
-        if: success()
         run: bundle install
 
       - name: Execute RuboCop Code Analysis
+        if: success()
         run: |
           rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
 
