@@ -33,11 +33,14 @@ jobs:
         run: bundle install
 
       - name: Execute RuboCop Code Analysis
-        if: success()
         run: |
           rubocop --fail-level warning || (echo "RuboCop failed with warnings/errors" && exit 1)
+          rubocop_warnings=$(rubocop --fail-level warning --format simple)
+          if [ -n "$rubocop_warnings" ]; then
+            echo "RuboCop warnings found, skipping Reek"
+            exit 1
+          fi
 
       - name: Execute Reek Code Detector
-        if: success()
         run: |
           reek features/ || (echo "Reek failed with warnings/errors" && exit 1)
