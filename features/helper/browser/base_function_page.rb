@@ -28,9 +28,9 @@ end
 
 def scroll_down_by_coord_window
   size = Capybara.current_session.current_window.size
-  x = size.at(0) * 0.30
-  y = size.at(1)
-  scroll_page(x, y)
+  horizontal = size.at(0) * 0.30
+  vertical = size.at(1)
+  scroll_page(horizontal, vertical)
 end
 
 def close_window

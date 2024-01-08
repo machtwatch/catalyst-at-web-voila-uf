@@ -10,6 +10,26 @@ inherit_gem:
   google-style: google-style.yml
 
 AllCops:
-  TargetRubyVersion: 2.6.3
+  TargetRubyVersion: 2.7.8
   NewCops: enable
   SuggestExtensions: false
+
+# Naming file
+Naming/FileName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
+# Format method name
+Naming/MethodName:
+  Enabled: true
+  EnforcedStyle: snake_case
+
+# Space indentation
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+# Align parameters
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation

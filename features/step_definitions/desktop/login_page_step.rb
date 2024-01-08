@@ -1,9 +1,5 @@
-When("[Desktop] user fill email {string} on login page") do |cre|
-  @page.login_page.input_email_or_phone(cre)
-end
-
-When("[Desktop] user fill phone number {string} on login page") do |cre|
-  @page.login_page.input_email_or_phone(cre)
+When("[Desktop] user fill email or phone {string} on login page") do |email_or_phone|
+  @page.login_page.input_email_or_phone(email_or_phone)
 end
 
 When("[Desktop] user fill password {string} on login page") do |password|
@@ -18,7 +14,7 @@ When("[Desktop] user see voila loader disappear") do ||
   @page.login_page.voila_loader
 end
 
-When("[Desktop] user sign in with account {string}") do |data|
+When("[Desktop] user sign in with email using account {string}") do |data|
   config_data = get_config_data('account')[data]
   @page.login_page.input_email_or_phone(config_data['username'])
   @page.login_page.input_password(config_data['password'])
