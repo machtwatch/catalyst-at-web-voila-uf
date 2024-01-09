@@ -29,3 +29,15 @@ Then("[Desktop] user see all component on login page") do
   wait_for_ajax
   @page.login_page.all_component_on_login_page
 end
+
+When("[Desktop] user print otp") do
+  otp = fetch_otp
+  puts "The OTP is: #{otp}"
+  raise "Failed to fetch OTP from email" if otp.nil?
+end
+
+When("[Desktop] user print text") do
+  channel_name = '#voila-integration-dev'
+  text_to_find = 'You can click the button below or download the attachment HTML file to see more detail'
+  @found_message = find_message(channel_name, text_to_find)
+end
