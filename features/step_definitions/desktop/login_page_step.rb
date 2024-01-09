@@ -31,9 +31,3 @@ When("[Desktop] user print otp") do
   puts "The OTP is: #{otp}"
   raise "Failed to fetch OTP from email" if otp.nil?
 end
-
-When("[Desktop] user print text") do
-  channel_name = '#voila-integration-dev'
-  text_to_find = 'You can click the button below or download the attachment HTML file to see more detail'
-  @found_message = find_message(channel_name, text_to_find)
-end

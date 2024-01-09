@@ -242,49 +242,6 @@ def take_screenshot(scenario)
   embed(encoded_image, 'image/png;base64', 'SCREENSHOT')
 end
 
-def fetch_otpp
-  mail = Net::IMAP.new('imap.gmail.com', ssl: true)
-  mail.login('buatbelanjahaha@gmail.com', 'iyid jyew knts grak')
-  mail.select('inbox')
-  otp = nil
-
-  result = mail.search(['FROM', 'Voila.id', 'SUBJECT', 'Verify your account'])
-
-  if result&.first&.is_a?(Integer)
-    email_id = result.first
-    raw_email = mail.fetch(email_id, 'RFC822').first&.attr['RFC822']
-    msg = Mail.new(raw_email)
-
-    puts msg.body.decoded
-
-    if msg.multipart?
-      msg.parts.each do |part|
-        next unless part.content_type =~ /text\/html/
-        body = part.body.decoded
-
-        doc = REXML::Document.new(body)
-        match = /text-align: center;">(\d{6})<\/p>/.match(doc.to_s)
-
-        if match
-          otp = match.captures.first
-          break
-        end
-      end
-    else
-      body = msg.body.decoded
-      match = /text-align: center;">(\d{6})<\/p>/.match(body)
-
-      if match
-        otp = match.captures.first
-      end
-    end
-  end
-
-  mail.close
-  mail.logout
-  otp
-end
-
 def fetch_otp
   mail = Net::IMAP.new('imap.gmail.com', ssl: true)
   mail.login('buatbelanjahaha@gmail.com', 'iyid jyew knts grak')
@@ -306,7 +263,7 @@ def fetch_otp
           puts "======== Text Body ========"
           puts body
 
-          match = /(\d{3})/i.match(body)
+          match = /(\d{6})/i.match(body)
 
           if match
             otp = match.captures.first
@@ -320,7 +277,7 @@ def fetch_otp
       puts "======== Body ========"
       puts body
 
-      match = /(\d{3})/i.match(body)
+      match = /(\d{6})/i.match(body)
 
       if match
         otp = match.captures.first
@@ -331,22 +288,6 @@ def fetch_otp
   mail.close
   mail.logout
   otp
-end
-
-def find_message(channel_name, text_to_find)
-  client = Slack::Web::Client.new
-  channel = client.conversations_list['channels'].find { |c| c['name'] == channel_name }
-  binding.pry
-  messages = client.channels_history(channel: channel['id'], count: 10)['messages']
-  target_message = messages.find { |message| message['text'].include?(text_to_find) }
-  if target_message
-    puts "Found the target message:"
-    puts target_message['text']
-    return target_message['text']
-  else
-    puts "Target message not found in the last 10 messages."
-    return nil
-  end
 end
 
 if ENV['SPEED']

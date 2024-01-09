@@ -6,4 +6,4 @@ Feature: Sample Feature
 
   @1
   Scenario: get otp
-    Given [Desktop] user print text  
+    Given [Desktop] user print otp  
