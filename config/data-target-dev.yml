@@ -1,12 +1,12 @@
 web:
   voila-homepage:
-    base: https://dev-voila-web.machtwatch.net
-  login-page:
-    base: https://base.com
+    url: https://dev-voila-web.machtwatch.net
+    path:
+      login: /account/login
 
 endpoints:
   login:
-    url: https://url.com:port/login_path
+    url: https://dev-voila-auth.machtwatch.net/login?&method=password&client=web
 
 account_discovery:
   data_1:
