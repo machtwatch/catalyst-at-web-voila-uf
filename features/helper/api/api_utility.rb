@@ -1,4 +1,4 @@
-def get_user_token
+def get_user_token(identifier, password)
   url = URI(get_config_data("endpoints")['login']['url'])
 
   https = Net::HTTP.new(url.host, url.port)
@@ -7,11 +7,11 @@ def get_user_token
   request = Net::HTTP::Post.new(url)
   request["Content-Type"] = "application/json"
   request.body = JSON.dump({
-                             "username": get_config_data("VALID_USERNAME"),
-                             "password": get_config_data("VALID_PASSWORD")
+                             :"identifier" => identifier,
+                             :"password" => password
                            })
 
   response = https.request(request)
   object = JSON.parse(response.read_body, object_class: OpenStruct)
-  return object.data.token
+  object.data.token
 end

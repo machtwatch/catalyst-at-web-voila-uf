@@ -1,0 +1,40 @@
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  TooManyStatements:
+    enabled: false
+  InstanceVariableAssumption:
+    enabled: false
+  DuplicateMethodCall:
+    enabled: false
+  Attribute:
+    enabled: false
+  NilCheck:
+    enabled: false
+
+# exclude scoping
+directories:
+  # helper
+  "features/helper":
+    # - disable
+    UnusedParameters:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+
+  # locator
+  "features/page_object/**/locator":
+    # - disable
+    TooManyConstants:
+      enabled: false
+
+  # avoid utility
+  "features/support":
+    # - enabled
+    # - disable
+    UtilityFunction:
+      enabled: false
+    FeatureEnvy:
+      enabled: false

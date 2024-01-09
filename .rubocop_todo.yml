@@ -4,22 +4,34 @@ Bundler:
 
 # Gemspec cops check for style and bad practices in gemspec files, e.g. rubocop.gemspec.
 Gemspec:
-  Enabled: false
+  Enabled: true
+
+# Naming cops check for naming issue of your code, such as method name, constant name, file name, etc.
+Naming:
+  Enabled: true
 
 # Layout cops inspect your code for consistent use of indentation, alignment, and white space.
 Layout:
   Enabled: true
   Exclude:
   - 'features/support/slack.rb'
-  
+
+# Checks the space indentation in the source code
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
 # Checks the length of lines in the source code. The maximum length is configurable.
 Layout/LineLength:
   Max: 300
   Exclude:
     - 'features/support/slack.rb'
-    # - 'features/step_definitions/**/*.rb'
-    # - 'features/page_object/**/*.rb'
     - 'rakefile'
+
+# Align parameters
+Layout/ParameterAlignment:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
 
 # Lint cops check for ambiguities and possible errors in your code.
 Lint:
@@ -31,14 +43,6 @@ Metrics:
 
 # Check that cop names in rubocop:disable comments are given with department name.
 Migration:
-  Enabled: false
-
-# Minitest cops check for Minitest best practices and coding conventions. Many of the them are based on the Minitest Style Guide.
-Minitest:
-  Enabled: false
-
-# Naming cops check for naming issue of your code, such as method name, constant name, file name, etc.
-Naming:
   Enabled: false
 
 # Performance cops optimization analysis for your projects.

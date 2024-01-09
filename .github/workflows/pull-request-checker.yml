@@ -1,0 +1,47 @@
+name: Pull Request Checker
+
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  code-analysis:
+    name: Code Checker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Configure Gemfile for Code Checker
+        run: |
+          mv Gemfile Gemfilee
+          mv GemfileForChecker Gemfile
+          cat Gemfile
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.8
+
+      - name: Install Bundler
+        run: |
+          gem install bundler -v '2.4.22'
+
+      - name: Bundle Install
+        run: bundle install
+
+      - name: Execute RuboCop Code Analysis
+        run: |
+          rubocop_warnings=$(rubocop --fail-level warning --format simple)
+          if echo "$rubocop_warnings" | grep -q "no offenses detected"; then
+            echo "RuboCop found no offenses"
+          else
+            echo "RuboCop warnings found, skipping Execute Reek"
+            exit 1
+          fi
+
+      - name: Execute Reek Code Detector
+        run: |
+          reek features/ || (echo "Reek failed with warnings/errors" && exit 1)

@@ -5,6 +5,9 @@ class LoginPage < SitePrism::Page
   include BasePage
   include LocatorLoginPage
 
+  config = get_config_data('web')['voila-homepage']
+  set_url(config['url'] + config['path']['login'])
+
   element :header_banner_sign_in, :xpath, HEADER_BANNER_SIGN_IN
   element :logo_voila_sign_in, :xpath, LOGO_VOILA_SIGN_IN
   element :placeholder_sign_in, :xpath, PLACEHOLDER_SIGN_IN

@@ -30,8 +30,7 @@ Dotenv.load
 Dotenv.overload(".env.#{ENV['ENV']}")
 
 def get_config_data(key)
-  config_data = YAML.load_file("config/data-target-" + ENV["TARGET"].downcase + ".yml")
-  return config_data[key]
+  YAML.load_file("config/data-target-" + ENV["TARGET"].downcase + ".yml")[key]
 end
 
 def display_banner
